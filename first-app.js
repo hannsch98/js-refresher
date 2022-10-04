@@ -1,43 +1,25 @@
-const person = {
-	name: "Nico",
-	age: "25",
-	greet() {
-		console.log("Hi, I am " + this.name);
-	},
+const fetchData = () => {
+	const promise = new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve("done");
+		}, 1500);
+	});
+	return promise;
 };
 
-//object destructuring:
-//instead of personData.name as property => {name}
-const printName = ({ name }) => {
-	console.log(name);
-};
+setTimeout(function timer() {
+	console.log("Timer is done");
+	fetchData()
+		.then((text) => {
+			console.log(text);
+			return fetchData();
+		})
+		.then((text2) => {
+			console.log(text2);
+		});
+}, 2000);
+//asynchronous code because it doesn't execute immediately
 
-printName(person);
-
-const { name, age } = person;
-console.log(name, age);
-
-const hobbies = ["Running", "Dying", "Fighting"];
-
-//array destructuring:
-const [hobby1, hobby2] = hobbies;
-console.log(hobby1, hobby2);
-
-// /* for (let hobby of hobbies) {
-// 	console.log(hobby);
-// } */
-
-// //console.log(hobbies.map((hobby) => "Hobby: " + hobby));
-// //array.map edits the array without changing it (for display reasons for example)
-
-// hobbies.push("Being gay");
-
-// const copiedArray = [...hobbies, "sleeping"];
-// //... is like ++ or --
-// //spread operator
-
-// const toArray = (...args) => args;
-// //... in this case called rest operator
-// //
-
-// console.log(toArray(1, 2, 3, 4));
+console.log("Sup");
+console.log("Hei Hei!");
+//synchronous code because it executes immediately (delay can come from hardware/network)
