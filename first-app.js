@@ -1,26 +1,18 @@
-const fs = require("fs");
+const person = {
+	name: "Nico",
+	age: "25",
+	greet() {
+		console.log("Hi, I am " + this.name);
+	},
+};
 
-fs.writeFileSync("hello.txt", "Hello from Node.js");
+person.greet();
 
-// var = variable
-// let = changing
-// const = constant
-
-const name = "Hanna";
-let age = 23;
-const hobbies = true;
-
-age = 25;
-
-function summarizeUser(userName, userAge, userHobbies) {
-	return (
-		"Hi, I am " +
-		userName +
-		", " +
-		userAge +
-		" years old. I have hobbies: " +
-		userHobbies
-	);
-}
-
-console.log(summarizeUser(name, age, hobbies));
+const hobbies = ["Running", "Dying", "Fighting"];
+/* for (let hobby of hobbies) {
+	console.log(hobby);
+} */
+console.log(hobbies.map((hobby) => "Hobby: " + hobby));
+//array.map edits the array without changing it (for display reasons for example)
+hobbies.push("Being gay");
+console.log(hobbies);
